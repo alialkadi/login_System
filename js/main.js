@@ -68,11 +68,11 @@ function reset() {
 
 //##########################################
 // مشتغلش بجيب عطل مع المتصفح
-    // var pathparts = location.pathname.split('/');
-    // var baseURL = ''
-    // for (var i = 0; i < pathparts.length - 1; i++) {
-    //     baseURL += '/' + pathparts[i]
-    // }
+    var pathparts = location.pathname.split('/');
+    var baseURL = ''
+    for (var i = 0; i < pathparts.length - 1; i++) {
+        baseURL += '/' + pathparts[i]
+    }
     // console.log(baseURL);
     
 //##########################################
@@ -97,8 +97,13 @@ function logIn() {
     for (var i = 0; i < userData.length; i++) {
         if (userData[i].uEmail.toLowerCase() == inemail.toLowerCase() && userData[i].uPass.toLowerCase() == inpass.toLowerCase()) {
             localStorage.setItem('sessionUsername', userData[i].uName)
-            window.open("../homepage.html", "_blank");
-            return true;
+            if (baseURL == '/') {
+                location.replace('https://' + location.hostname + '/home.html')
+
+            } else {
+                location.replace(baseURL + '/home.html')
+
+            }
         } else {
             document.getElementById('incorrect').innerHTML = '<span class="p-2 text-danger">incorrect email or password</span>'
         }
