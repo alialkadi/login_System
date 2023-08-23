@@ -98,7 +98,7 @@ function logIn() {
         if (userData[i].uEmail.toLowerCase() == inemail.toLowerCase() && userData[i].uPass.toLowerCase() == inpass.toLowerCase()) {
             localStorage.setItem('sessionUsername', userData[i].uName)
             if (baseURL == '/') {
-                location.replace('https://' + location.hostname + '/home.html')
+                location.replace('https://' + location.hostname + '/homepage.html')
 
             } else {
                 location.replace(baseURL + '/home.html')
